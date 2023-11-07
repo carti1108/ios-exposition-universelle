@@ -12,6 +12,7 @@ final class ExpoItemListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     private var exhibitionItems: [ExhibitionItem] = []
     private var exhibitionItemsData = DataDecoder<[ExhibitionItem]>()
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ final class ExpoItemListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        appDelegate.shouldSupportAllOrientation = true
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false

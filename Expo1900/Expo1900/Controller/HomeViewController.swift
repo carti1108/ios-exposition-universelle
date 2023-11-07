@@ -17,17 +17,19 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var leftFlagImageView: UIImageView!
     @IBOutlet private weak var rightFlagImageView: UIImageView!
     private var expoInformationData = DataDecoder<ExpoInformation>()
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.isNavigationBarHidden = true
         parseData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        appDelegate.shouldSupportAllOrientation = false
         super.viewWillAppear(animated)
         
-        navigationController?.isNavigationBarHidden = true
+        
     }
     
     private func configureUI(expoInformation: ExpoInformation) {
