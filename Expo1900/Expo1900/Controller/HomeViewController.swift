@@ -21,7 +21,6 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
         parseData()
     }
     
@@ -29,7 +28,7 @@ final class HomeViewController: UIViewController {
         appDelegate.shouldSupportAllOrientation = false
         super.viewWillAppear(animated)
         
-        
+        navigationController?.isNavigationBarHidden = true
     }
     
     private func configureUI(expoInformation: ExpoInformation) {
