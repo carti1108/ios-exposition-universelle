@@ -18,6 +18,7 @@ final class ExpoItemListViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        tableView.delegate = self
         parseData()
     }
     
@@ -40,17 +41,15 @@ final class ExpoItemListViewController: UIViewController {
         present(alert, animated: true)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let itemDescriptionViewController = segue.destination as? ItemDescriptionViewController else {
-            return
-        }
-        let cellIndexPath = tableView.indexPathForSelectedRow
-        guard let rowOfIndexPath: Int = cellIndexPath?.row else {
-            return
-        }
-        
-        itemDescriptionViewController.setUp(asset: exhibitionItems[rowOfIndexPath])
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let cellIndexPath = tableView.indexPathForSelectedRow
+//        guard let rowOfIndexPath: Int = cellIndexPath?.row else {
+//            return
+//        }
+//        
+//         
+//        
+//    }
     
     private func parseData() {
         do {
@@ -67,12 +66,24 @@ extension ExpoItemListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExpoItemCell", for: indexPath) as? ExpoItemCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ExpoItemCell.self), for: indexPath) as? ExpoItemCell else {
             return UITableViewCell()
         }
         
         cell.configureCell(asset: self.exhibitionItems[indexPath.row])
         
         return cell
+    }
+}
+
+extension ExpoItemListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let itemDescriptionViewController =  self.storyboard?.instantiateViewController(identifier: String(describing: ItemDescriptionViewController.self), creator: { coder in
+            ItemDescriptionViewController(coder: coder, asset: self.exhibitionItems[indexPath.row])
+        }) else {
+            return
+        }
+        
+        navigationController?.pushViewController(itemDescriptionViewController, animated: true)
     }
 }

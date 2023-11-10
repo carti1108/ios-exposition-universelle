@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController, AlertPresentable {
     
     @IBOutlet private weak var expoTitleLabel: UILabel!
     @IBOutlet private weak var expoPosterImageView: UIImageView!
@@ -40,18 +40,6 @@ final class HomeViewController: UIViewController {
         descriptionLabel.text = expoInformation.description
         leftFlagImageView.image = UIImage(named: "flag")
         rightFlagImageView.image = UIImage(named: "flag")
-    }
-    
-    private func showAppTerminatingAlert() {
-        let title = "시스템 오류가 발생했습니다."
-        let message = "Data를 불러오는데 실패했습니다. 앱이 종료됩니다."
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let terminateAction = UIAlertAction(title: "지금 종료", style: .destructive) { _ in
-            exit(1)
-        }
-            
-        alert.addAction(terminateAction)
-        present(alert, animated: true)
     }
     
     private func parseData() {

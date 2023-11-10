@@ -239,7 +239,6 @@
                                             <outlet property="itemDescriptionLabel" destination="lci-VR-VvX" id="ztw-9w-jhn"/>
                                             <outlet property="itemImageView" destination="7KG-pl-YxA" id="NH9-LB-wgE"/>
                                             <outlet property="itemNameLabel" destination="Zgx-HW-9bP" id="5eM-Qd-Gea"/>
-                                            <segue destination="LOg-8M-Gki" kind="show" id="T4s-k9-alH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -268,7 +267,7 @@
         <!--Item Description View Controller-->
         <scene sceneID="ffh-Ok-lWp">
             <objects>
-                <viewController id="LOg-8M-Gki" customClass="ItemDescriptionViewController" customModule="Expo1900" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemDescriptionViewController" id="LOg-8M-Gki" customClass="ItemDescriptionViewController" customModule="Expo1900" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fY3-qr-Afk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -286,7 +285,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BD1-Od-gli">
-                                                <rect key="frame" x="15" y="240" width="323" height="20.333333333333371"/>
+                                                <rect key="frame" x="15" y="240" width="323" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

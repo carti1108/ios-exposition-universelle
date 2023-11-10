@@ -11,9 +11,7 @@ final class ItemDescriptionViewController: UIViewController {
 
     @IBOutlet private weak var itemImageView: UIImageView!
     @IBOutlet private weak var itemDescriptionLabel: UILabel!
-    private var itemImage: String = ""
-    private var itemDescription: String = ""
-    private var navigationTitle: String = ""
+    private let asset: ExhibitionItem
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +19,18 @@ final class ItemDescriptionViewController: UIViewController {
         configureUI()
     }
     
-    func setUp(asset: ExhibitionItem) {
-        navigationTitle = asset.name
-        itemImage = asset.imageName
-        itemDescription = asset.description
+    init?(coder: NSCoder, asset: ExhibitionItem) {
+        self.asset = asset
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func configureUI() {
-        self.navigationItem.title = navigationTitle
-        itemImageView.image = UIImage(named: itemImage)
-        itemDescriptionLabel.text = itemDescription
+        self.navigationItem.title = asset.name
+        itemImageView.image = UIImage(named: asset.imageName)
+        itemDescriptionLabel.text = asset.description
     }
 }
